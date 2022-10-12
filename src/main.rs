@@ -1,3 +1,36 @@
+struct Square<new> 
+{
+    side: new,
+}
+
+impl Square<u32> {
+    fn new( t: u32) -> Self {
+        Square { side : t}
+    }
+}
+
+impl Square<f64> {
+    fn new( t: f64) -> Self {
+        Square { side : t}
+    }
+}
+
+trait Area {
+    fn area(&self) -> f64;
+}
+
+impl Area for Square<u32> {
+    fn area(&self) -> u32 {
+        self.side * self.side
+    }
+}
+
+impl Area for Square<f64> {
+    fn area(&self) -> f64 {
+        self.side * self.side
+    }
+}
+
 fn main() {
     let square = Square::<u32>::new(5);
     let square_float = Square::<f64>::new(5.4);
